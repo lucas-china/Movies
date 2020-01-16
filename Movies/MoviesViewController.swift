@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MoviesViewController.swift
 //  Movies
 //
 //  Created by Lucas Santana Brito on 16/01/20.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MoviesViewController: UIViewController {
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
+   
 }
-
