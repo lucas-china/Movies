@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W6e-sc-Sk5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -67,7 +67,7 @@
                                         </constraints>
                                         <size key="customSize" width="200" height="308"/>
                                         <connections>
-                                            <outlet property="folderView" destination="lya-aS-kW7" id="Afg-HF-YZG"/>
+                                            <outlet property="folderView" destination="lya-aS-kW7" id="I8k-sw-EM7"/>
                                             <outlet property="movieImageView" destination="cR3-Le-EpL" id="I3A-du-deP"/>
                                             <outlet property="nameMovieLabel" destination="36F-Yc-0eU" id="UjZ-dG-mi0"/>
                                         </connections>
@@ -194,8 +194,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Eix-kC-T9v"/>
                     <connections>
-                        <outlet property="detailsMovieTextView" destination="z3O-8D-8W2" id="c1O-wJ-r5X"/>
-                        <outlet property="detailsMoviesTextView" destination="z3O-8D-8W2" id="BFS-CM-Xre"/>
+                        <outlet property="detailsMoviesTextView" destination="z3O-8D-8W2" id="bDs-rU-NdF"/>
                         <outlet property="movieImageView" destination="09N-5c-yVp" id="atp-nO-oi6"/>
                     </connections>
                 </viewController>
