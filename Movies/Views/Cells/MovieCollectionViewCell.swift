@@ -23,7 +23,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
             
             let url = URL(string: "\(urlBaseImage)\(posterPath)")
             movieImageView.sd_setImage(with: url) { (image, error, imageCache, url) in
-                Util.stopActivityIndicator(activityIndicator: self.activityIndicator)
+                DispatchQueue.main.async {
+                    Util.stopActivityIndicator(activityIndicator: self.activityIndicator)
+                }
             }
         }
         

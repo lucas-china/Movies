@@ -10,10 +10,11 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-   var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-   var moviesArray = [Movie]()
-   var page = 1
-   var totalPages = 0
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    var moviesArray = [Movie]()
+    var page = 1
+    var totalPages = 0
+    var isLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +41,17 @@ class MoviesViewController: UIViewController {
     }
     
     func downloadMovies() {
-        Util.createActivityIndicator(activityIndicator: activityIndicator, view: self.view)
-        Movie.downloadMovies(page: page) { (isSucess, movies, totalPages) in
+        isLoading = true
+        Movie.downloadMovies(page: page) { [weak self] (isSucess, movies, totalPages) in
+            guard let this = self else { return }
             if isSucess {
-                self.moviesArray = movies
-                self.totalPages = totalPages
-                self.page += 1
-                self.moviesCollectionView.reloadData()
-                Util.stopActivityIndicator(activityIndicator: self.activityIndicator)
+                this.moviesArray += movies
+                this.totalPages = totalPages
+                print(this.moviesArray.last?.title)
+                DispatchQueue.main.async {
+                    this.isLoading = false
+                    this.moviesCollectionView.reloadData()
+                }
             }
         }
     }
@@ -78,6 +82,15 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if let movieDetailsVC = viewController as? MovieDetailsViewController {
             movieDetailsVC.movie = moviesArray[indexPath.row]
             navigationController?.pushViewController(movieDetailsVC, animated: true)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoading && page < totalPages {
+            page += 1
+            downloadMovies()
         }
     }
 }
