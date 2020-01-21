@@ -18,6 +18,11 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initAplication()
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        moviesCollectionView.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
     }
     
     func initAplication() {

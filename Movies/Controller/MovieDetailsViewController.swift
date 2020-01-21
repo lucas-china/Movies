@@ -20,6 +20,12 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configeDetails()
+        setupDetailTextView()
+    }
+    
+    private func setupDetailTextView() {
+        detailsMoviesTextView.backgroundColor = .white
+        detailsMoviesTextView.textColor = .black
     }
     
     private func configeDetails() {
